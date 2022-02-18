@@ -38,24 +38,45 @@ document.addEventListener('DOMContentLoaded', function () {
                 heads.textContent = headsRolled;
                 tails.textContent = tailsRolled;
 
-    })
-
-    
-
     // Flip Button Click Handler
         // TODO: Determine flip outcome
         // TODO: Update image and status message in the DOM
 
+ // TODO: Calculate the total number of rolls/flips
+        let total = tailsRolled + headsRolled;
+       
+ // Make variables to track the percentages of heads and tails
+        let percentHeads = 0;
+        let percentTails = 0;
+
         // Update the scorboard
-        // TODO: Calculate the total number of rolls/flips
-        // Make variables to track the percentages of heads and tails
-        // TODO: Use the calculated total to calculate the percentages
-        // HINT: Make sure not to divide by 0! (if total is 0, percent will be 0 as well)
+       
+       
+        // HINT: Make sure not to divide by 0! (if total is 0, percent will
+        
+     if(total > 0){
+         percentHeads = Math.round((headsRolled / total) * 100);
+         percentTails = Math.round((tailsRolled / total) * 100);
+     }
         // TODO: Update the display of each table cell
-
-
+         tailsPerc.textContent = percentTails + "%";
+         headsPerc.textContent = percentHeads + "%";
+        })
     // Clear Button Click Handler
-        // TODO: Reset global variables to 0
-        // TODO: Update the scoreboard (same logic as in flip button click handler)
+    const clearBtn = document.getElementById('clear');
+    // TODO: Reset global variables to 0
+    clearBtn.addEventListener('click', ()=> {
+        tailsRolled = 0;
+        headsRolled = 0;
+        percentHeads = 0;
+        percentTails = 0;
+ // TODO: Update the scoreboard (same logic as in flip button click handler)
 
+        heads.textContent = headsRolled;
+        tails.textContent = tailsRolled;
+        headsPerc.textContent = percentHeads;
+        tailsPerc.textContent = percentTails;
+        message.textContent = "Let's Get Rolling!"
+    })
+             
 })
